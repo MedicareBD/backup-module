@@ -2,6 +2,9 @@
     "name": "medicarebd/backup-module",
     "type": "laravel-module",
     "description": "",
+    "require" :{
+        "spatie/laravel-backup": "^8.1"
+    },
     "authors": [
         {
             "name": "Bishwajit Adhikary",
