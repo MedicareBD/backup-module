@@ -1,0 +1,20 @@
+{
+  "System Successfully Reset": "System Successfully Reset",
+    "Backup Created Successfully": "",
+    "Backup Deleted Successfully": "",
+    "The database must be a file of type: application/sql.": "",
+    "Database Restored Successfully": "",
+    "Backup Setting Saved Successfully": "",
+    "Manage Backups": "",
+    "Backup Setting": "",
+    "Backup List": "",
+    "Create Backup": "",
+    "Backup Lists": "",
+    "File Name": "",
+    "Only Database": "",
+    "Only File": "",
+    "Full Backup": "",
+    "Backup": "",
+    "Enter backup filename": "",
+    "Select Backup Type": ""
+}

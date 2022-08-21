@@ -7,10 +7,10 @@
         <div class="col-md-6">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h4>@lang('Create Backup')</h4>
+                    <h4>{{ __('Create Backup') }}</h4>
                     <div class="card-header-action">
                         <a href="{{ route('admin.backup.create') }}" class="btn btn-primary">
-                            <i class="fas fa-plus"></i> @lang('Backup Lists')
+                            <i class="fas fa-plus"></i> {{ __("Backup Lists") }}
                         </a>
                     </div>
                 </div>
