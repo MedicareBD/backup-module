@@ -13,21 +13,21 @@ return [
                     'text' => 'Backup',
                     'route' => 'admin.backup.index',
                     'can' => 'backup-read',
-                    'order' => 130
+                    'order' => 130,
                 ],
                 [
                     'text' => 'Restore',
                     'route' => 'admin.restore.index',
                     'can' => 'restore-read',
-                    'order' => 131
+                    'order' => 131,
                 ],
                 [
                     'text' => 'Reset System',
                     'route' => 'admin.reset.index',
                     'can' => 'reset-read',
-                    'order' => 132
-                ]
-            ]
-        ]
-    ]
+                    'order' => 132,
+                ],
+            ],
+        ],
+    ],
 ];

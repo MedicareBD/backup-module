@@ -2,8 +2,6 @@
 
 namespace Modules\Backup\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Backup\Http\Requests\UpdateBackupSettingRequest;
 
@@ -34,7 +32,7 @@ class SettingController extends Controller
 
         return response()->json([
             'message' => __('Backup Setting Saved Successfully'),
-            'redirect' => route('admin.backup.settings.index')
+            'redirect' => route('admin.backup.settings.index'),
         ]);
     }
 }

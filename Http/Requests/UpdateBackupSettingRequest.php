@@ -19,7 +19,7 @@ class UpdateBackupSettingRequest extends FormRequest
             'auto_backup' => ['nullable', Rule::in(['off', 'daily', 'weekly', 'monthly', 'yearly'])],
             'password' => ['nullable', 'string', 'max:255'],
             'disks' => ['nullable', 'array'],
-            'disks.*' => ['nullable', Rule::in(['local','public','s3'])],
+            'disks.*' => ['nullable', Rule::in(['local', 'public', 's3'])],
 
             // Slack
             'slack_webhook_url' => ['nullable', 'url'],

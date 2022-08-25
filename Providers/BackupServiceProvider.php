@@ -4,18 +4,17 @@ namespace Modules\Backup\Providers;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Database\Eloquent\Factory;
 use Modules\Backup\Console\BackupCommand;
 
 class BackupServiceProvider extends ServiceProvider
 {
     /**
-     * @var string $moduleName
+     * @var string
      */
     protected $moduleName = 'Backup';
 
     /**
-     * @var string $moduleNameLower
+     * @var string
      */
     protected $moduleNameLower = 'backup';
 
@@ -33,24 +32,23 @@ class BackupServiceProvider extends ServiceProvider
 
         $this->app->booted(function () {
             $schedule = $this->app->make(Schedule::class);
-            if (\DB::getDefaultConnection() && \Schema::hasTable('settings')){
-                if (setting('backup.auto_backup', 'off') !== "off"){
+            if (\DB::getDefaultConnection() && \Schema::hasTable('settings')) {
+                if (setting('backup.auto_backup', 'off') !== 'off') {
                     $period = setting('backup.auto_backup');
-                    switch ($period){
-                        case "daily":
+                    switch ($period) {
+                        case 'daily':
                             $schedule->command('backup:take')->daily();
                             break;
-                        case "weekly":
+                        case 'weekly':
                             $schedule->command('backup:take')->weekly();
                             break;
-                        case "monthly":
+                        case 'monthly':
                             $schedule->command('backup:take')->monthly();
                             break;
-                        case "yearly":
+                        case 'yearly':
                             $schedule->command('backup:take')->yearly();
                             break;
                     }
-
                 }
             }
         });
@@ -66,7 +64,7 @@ class BackupServiceProvider extends ServiceProvider
         $this->app->register(RouteServiceProvider::class);
         $this->app->register(EventServiceProvider::class);
         $this->commands([
-            BackupCommand::class
+            BackupCommand::class,
         ]);
     }
 
@@ -78,7 +76,7 @@ class BackupServiceProvider extends ServiceProvider
     protected function registerConfig()
     {
         $this->publishes([
-            module_path($this->moduleName, 'Config/config.php') => config_path($this->moduleNameLower . '.php'),
+            module_path($this->moduleName, 'Config/config.php') => config_path($this->moduleNameLower.'.php'),
         ], 'config');
         $this->mergeConfigFrom(
             module_path($this->moduleName, 'Config/config.php'), $this->moduleNameLower
@@ -92,13 +90,13 @@ class BackupServiceProvider extends ServiceProvider
      */
     public function registerViews()
     {
-        $viewPath = resource_path('views/modules/' . $this->moduleNameLower);
+        $viewPath = resource_path('views/modules/'.$this->moduleNameLower);
 
         $sourcePath = module_path($this->moduleName, 'Resources/views');
 
         $this->publishes([
-            $sourcePath => $viewPath
-        ], ['views', $this->moduleNameLower . '-module-views']);
+            $sourcePath => $viewPath,
+        ], ['views', $this->moduleNameLower.'-module-views']);
 
         $this->loadViewsFrom(array_merge($this->getPublishableViewPaths(), [$sourcePath]), $this->moduleNameLower);
     }
@@ -110,7 +108,7 @@ class BackupServiceProvider extends ServiceProvider
      */
     public function registerTranslations()
     {
-        $langPath = resource_path('lang/modules/' . $this->moduleNameLower);
+        $langPath = resource_path('lang/modules/'.$this->moduleNameLower);
 
         if (is_dir($langPath)) {
             $this->loadTranslationsFrom($langPath, $this->moduleNameLower);
@@ -135,10 +133,11 @@ class BackupServiceProvider extends ServiceProvider
     {
         $paths = [];
         foreach (\Config::get('view.paths') as $path) {
-            if (is_dir($path . '/modules/' . $this->moduleNameLower)) {
-                $paths[] = $path . '/modules/' . $this->moduleNameLower;
+            if (is_dir($path.'/modules/'.$this->moduleNameLower)) {
+                $paths[] = $path.'/modules/'.$this->moduleNameLower;
             }
         }
+
         return $paths;
     }
 }

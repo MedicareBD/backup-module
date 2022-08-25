@@ -3,8 +3,6 @@
 namespace Modules\Backup\Console;
 
 use Illuminate\Console\Command;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Input\InputArgument;
 
 class BackupCommand extends Command
 {
@@ -62,7 +60,7 @@ class BackupCommand extends Command
             'backup.notifications.discord.webhook_url' => $discordWebhookUrl,
             'backup.notifications.discord.username' => $discordUsername,
             'backup.notifications.discord.avatar_url' => $discordAvatar,
-            'backup.backup.destination.disks' => $disks
+            'backup.backup.destination.disks' => $disks,
         ]);
 
         \Artisan::call('backup:run');

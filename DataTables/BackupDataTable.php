@@ -2,8 +2,8 @@
 
 namespace Modules\Backup\DataTables;
 
-use Modules\Backup\Entities\Backup;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
+use Modules\Backup\Entities\Backup;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Yajra\DataTables\Html\Column;
@@ -15,12 +15,12 @@ class BackupDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addIndexColumn()
-            ->editColumn('type', fn($model) => ucwords(str($model->type)->replace('_', ' ')))
-            ->editColumn('driver', fn($model) => collect($model->driver)->implode(','))
-            ->editColumn('from', fn($model) => str($model->from)->upper())
-            ->editColumn('by', fn($model) => $model->by->name ?? null)
+            ->editColumn('type', fn ($model) => ucwords(str($model->type)->replace('_', ' ')))
+            ->editColumn('driver', fn ($model) => collect($model->driver)->implode(','))
+            ->editColumn('from', fn ($model) => str($model->from)->upper())
+            ->editColumn('by', fn ($model) => $model->by->name ?? null)
             ->editColumn('download', 'backup::backup.download')
-            ->editColumn('created_at', fn($model) => format_date($model->created_at, 'd M, Y h:i A'))
+            ->editColumn('created_at', fn ($model) => format_date($model->created_at, 'd M, Y h:i A'))
             ->addColumn('action', 'backup::backup.action')
             ->setRowId('id')
             ->rawColumns(['download', 'action']);
@@ -57,17 +57,17 @@ class BackupDataTable extends DataTable
                 ->exportable(false)
                 ->orderable(false)
                 ->title('#'),
-            Column::make('file_name')->title(__("File Name")),
-            Column::make('type')->title(__("Backup Type"))->addClass('text-center'),
-            Column::make('driver')->title(__("Disk"))->addClass('text-center'),
-            Column::make('from')->title(__("Created From"))->addClass('text-center'),
-            Column::make('by')->title(__("Created By"))->addClass('text-center'),
-            Column::make('download')->title(__("Download"))
+            Column::make('file_name')->title(__('File Name')),
+            Column::make('type')->title(__('Backup Type'))->addClass('text-center'),
+            Column::make('driver')->title(__('Disk'))->addClass('text-center'),
+            Column::make('from')->title(__('Created From'))->addClass('text-center'),
+            Column::make('by')->title(__('Created By'))->addClass('text-center'),
+            Column::make('download')->title(__('Download'))
                 ->printable(false)
                 ->exportable(false)
                 ->orderable(false)
                 ->addClass('text-center'),
-            Column::make('created_at')->title(__("Created At")),
+            Column::make('created_at')->title(__('Created At')),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
@@ -80,6 +80,6 @@ class BackupDataTable extends DataTable
 
     protected function filename(): string
     {
-        return 'Backup_' . date('YmdHis');
+        return 'Backup_'.date('YmdHis');
     }
 }

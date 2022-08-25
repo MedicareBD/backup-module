@@ -16,7 +16,7 @@ class StoreBackupRequest extends FormRequest
     {
         return [
             'name' => ['nullable', 'string', 'max:255'],
-            'backup_type' => ['required', Rule::in(['only_db', 'only_files', 'full_backup'])]
+            'backup_type' => ['required', Rule::in(['only_db', 'only_files', 'full_backup'])],
         ];
     }
 

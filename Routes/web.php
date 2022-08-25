@@ -5,8 +5,8 @@ use Modules\Backup\Http\Controllers\ResetController;
 use Modules\Backup\Http\Controllers\RestoreController;
 use Modules\Backup\Http\Controllers\SettingController;
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'admin']], function (){
-    Route::group(['prefix' => 'backup', 'as' => 'backup.'], function (){
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'admin']], function () {
+    Route::group(['prefix' => 'backup', 'as' => 'backup.'], function () {
         Route::resource('settings', SettingController::class)->only('index', 'update');
     });
     Route::resource('backup', BackupController::class)->except('update', 'edit');

@@ -14,7 +14,7 @@ class DatabaseRestoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'database' => ['required', 'file']
+            'database' => ['required', 'file'],
         ];
     }
 
