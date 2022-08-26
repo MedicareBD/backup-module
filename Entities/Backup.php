@@ -20,9 +20,4 @@ class Backup extends Model
     {
         return $this->belongsTo(User::class, 'by', 'id');
     }
-
-    protected static function newFactory()
-    {
-        return \Modules\Backup\Database\factories\BackupFactory::new();
-    }
 }
